@@ -20,9 +20,11 @@
 <br/>
 
 ## 3. KNN
+
 - k個最近鄰居，選多數特徵決來分類
 - KNN不需要訓練，稱為懶惰學習法
 - K值選擇會影響預測結果與計算時間
+
 | 目標 | 指令 | 說明 |
 | --- | --- | --- |
 |import|from sklearn.neighbors import KNeighborsClassifier||
