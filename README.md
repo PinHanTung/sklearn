@@ -19,7 +19,7 @@
 | 分割訓練資料 | `x_train`,`x_test`,`y_train`,`y_test`=train_test_split(<br/>`data`,`label`,<br/>test_size=`0.2`,<br/>random_state=0) ||
 <br/>
 
-## 3. KNN
+## 3. KNN (K-nearest neighbors)
 
 - k個最近鄰居，選多數特徵決來分類
 - KNN不需要訓練，稱為懶惰學習法
@@ -32,4 +32,14 @@
 |訓練模型|`knn`.fit(`x_train`,`y_train`)||
 |預測模型|`predictions`= `knn`.predict(`x_test`)||
 |預測準確率|`knn`.score(`x_train`,`y_train`)<br/>`knn`.score(`x_test`,`y_test`)||
+<br/>
 
+## 4. 邏輯斯回歸 (logistic regression)
+
+- 將特徵資料轉換為0-1的值，來預測是否為某個標籤的機率
+- 就分類結果而言，會在標籤之間畫出一條線性的決策邊界，是一種二元分類器
+- 若資料本身很難完整一分為二，分類效果就會不佳
+
+| 目標 | 指令 | 說明 |
+| --- | --- | --- |  
+||||
