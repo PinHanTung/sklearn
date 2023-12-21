@@ -42,4 +42,29 @@
 
 | 目標 | 指令 | 說明 |
 | --- | --- | --- |  
-||||
+|import|from sklearn.linear_model import LogisticRegression||
+|建立模型|`log_reg` = LogisticRegression()||
+<br/>
+
+## 5. 線性支援向量機 (Linear SVM)
+
+- SVM會將資料投射到更高維度、找出超平面，讓二維無法分類的資料找出分界線
+- SVM分類效果比高邏輯斯回歸好，但也更費時；邏輯斯更適合處理大型資料集
+
+| 目標 | 指令 | 說明 |
+| --- | --- | --- | 
+|import|from sklearn.svm import LinearSVC||
+|建立模型| `linear_svm` = LinearSVC()||
+<br/>
+
+## 6. 非線性 SVM
+
+- 當資料組成是線性不可分時使用
+- 經過核函數進行維度轉換，來找到區分資料的超平面
+- 從數學的角度來看，其實是線性的；只不過原始資料看不出來
+
+| 目標 | 指令 | 說明 |
+| --- | --- | --- | 
+|import|from sklearn.svm import SVC||
+|建立模型| `linear_svm` = SVC()||
+<br/>
