@@ -6,9 +6,10 @@
 | --- | --- | --- |
 |產生數據| from sklearn.datasets import make_blobs | 產生簇狀分布資料|
 || from sklearn.datasets import make_moons | 產生新月形分布資料|
-|| from sklearn.preprocessing import StandardScaler| 執行標準化|
-|| from sklearn.model_selection import train_test_split| 分割訓練資料|
-|| import matplotlib.pyplot as plt ||
+|| from sklearn.datasets import load_iris| 讀取鳶尾花數據集|
+|標準化| from sklearn.preprocessing import StandardScaler||
+|分割訓練資料| from sklearn.model_selection import train_test_split||
+|繪圖| import matplotlib.pyplot as plt ||
 * 特徵資料的標準化：各特徵資料的範圍可能差異很大，使用標準化可以把所有特徵資料調整到固定範圍，加快機器學習模型的訓練速度、有機會提高預測準確率。
 <br/>
 
@@ -18,6 +19,7 @@
 |資料| `x`,`y`=make_moons(<br/>  n_samples=`資料比數`,<br/>n_features=`特徵數量`,<br/>centers=`標籤數量`,<br/>random_state=0) | 產生簇狀分布資料<br/>x為特徵，y為標籤|
 ||`x`,`y`=make_blobs(<br/>  n_samples=`資料比數`,<br/>noise=`0.15`,<br/>random_state=0) | 產生新月形分布資料<br/>x為特徵，y為標籤<br/>適合二元分類的非線性可分的情況|
 || StandardScaler().fit_transform(`x_data`) | 資料標準化<br/>使特徵資料的平均數=0、變異數=1|
+|| `x`,`y`=load_iris(return_X_y=True)| 讀取鳶尾花數據集|
 || `x_train`,`x_test`,`y_train`,`y_test`=train_test_split(<br/>`data`,`label`,<br/>test_size=`0.2`,<br/>random_state=0) |分割訓練資料|
 |模型|`模型名`.fit(`x_train`,`y_train`)|訓練模型|
 ||`predictions`= `模型名`.predict(`x_test`)|預測模型|
@@ -69,4 +71,28 @@
 | --- | --- | --- | 
 |import|from sklearn.svm import SVC||
 |建立模型| `linear_svm` = SVC()||
+<br/>
+
+
+## 7. 決策樹 (decision tree)
+
+- 樹狀的決策結構，根據特徵資料決定每個節點往哪走，最後得到預測標籤
+- 因為對訓練資料十分敏感，可能會產生過度適配的問題，導致對新資料的預測準確率不佳
+
+| 目標 | 指令 | 說明 |
+| --- | --- | --- | 
+|import|from sklearn.tree import DecisionTreeClassifier||
+|建立模型| `tree` = DecisionTreeClassifier()||
+<br/>
+
+
+## 8. 隨機森林 (random forest)
+
+- 由多個決策樹組成，會隨機將資料分給不同決策樹，藉此提高準確率
+- 這種多個機器學習組合成的模型(可以是同一類或不同類)，稱為集成學習(ensemble learning)
+
+| 目標 | 指令 | 說明 |
+| --- | --- | --- | 
+|import|from sklearn.ensemble import RandomForestClassifier||
+|建立模型|`forest` = RandomForestClassifier()||
 <br/>
