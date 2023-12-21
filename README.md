@@ -14,8 +14,8 @@
 ## 2. 常用共通指令
 | 目標 | 指令 | 說明 |
 | --- | --- | --- |
-|資料| `x`,`y`=make_blobs(<br/>  n_samples=`資料比數`,<br/>n_features=`特徵數量`,<br/>centers=`標籤數量`,<br/>random_state=0) | 產生測試用資料，x為特徵，y為標籤|
-|| StandardScaler().fit_transform(`x_data`) | 資料標準化，使特徵資料的平均數=0、變異數=1|
+|資料| `x`,`y`=make_blobs(<br/>  n_samples=`資料比數`,<br/>n_features=`特徵數量`,<br/>centers=`標籤數量`,<br/>random_state=0) | 產生測試用資料<br/>x為特徵，y為標籤|
+|| StandardScaler().fit_transform(`x_data`) | 資料標準化<br/>使特徵資料的平均數=0、變異數=1|
 || `x_train`,`x_test`,`y_train`,`y_test`=train_test_split(<br/>`data`,`label`,<br/>test_size=`0.2`,<br/>random_state=0) |分割訓練資料|
 |模型|`模型名`.fit(`x_train`,`y_train`)|訓練模型|
 ||`predictions`= `模型名`.predict(`x_test`)|預測模型|
