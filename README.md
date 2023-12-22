@@ -1,4 +1,5 @@
 # sklearn
+## 使用流程
 - 資料
   - 引入資料、標準化
   - 分割訓練資料
@@ -18,7 +19,7 @@
 || from sklearn.datasets import load_iris| 讀取鳶尾花數據集|
 |標準化| from sklearn.preprocessing import StandardScaler||
 |分割訓練資料| from sklearn.model_selection import train_test_split||
-|繪圖| import matplotlib.pyplot as plt ||
+|預測結果報告| from sklearn.metrics import classification_report||
 * 特徵資料的標準化：各特徵資料的範圍可能差異很大，使用標準化可以把所有特徵資料調整到固定範圍，加快機器學習模型的訓練速度、有機會提高預測準確率。
 <br/>
 
@@ -32,7 +33,8 @@
 || `x_train`,`x_test`,`y_train`,`y_test`=train_test_split(<br/>`data`,`label`,<br/>test_size=`0.2`,<br/>random_state=0) |分割訓練資料|
 |模型|`模型名`.fit(`x_train`,`y_train`)|訓練模型|
 ||`predictions`= `模型名`.predict(`x_test`)|預測模型|
-||`模型名`.score(`x_train`,`y_train`)<br/>`模型名`.score(`x_test`,`y_test`)|預測準確率|
+|報告|`模型名`.score(`x_train`,`y_train`)<br/>`模型名`.score(`x_test`,`y_test`)|預測準確率|
+||classification_report(`y_test`, `predictions`)|通常看accuracy(整體精準率)、f1-score(precision,recall的調和平均數)|
 <br/>
 
 ## 3-1. 模型1：KNN (K-nearest neighbors)
