@@ -21,7 +21,7 @@
 |標準化| from sklearn.preprocessing import StandardScaler||
 |select| from sklearn.model_selection import train_test_split| 分割訓練資料|
 ||from sklearn.model_selection import cross_val_score| k-fold交叉驗證|
-||from sklearn.model_selection import GridSearch| 網格搜尋、最佳含交叉驗證準確率|
+||from sklearn.model_selection import GridSearch| 網格搜尋(最佳參數)、交叉驗證準確率|
 |預測結果報告| from sklearn.metrics import classification_report||
 * 特徵資料的標準化：各特徵資料的範圍可能差異很大，使用標準化可以把所有特徵資料調整到固定範圍，加快機器學習模型的訓練速度、有機會提高預測準確率。
 <br/>
