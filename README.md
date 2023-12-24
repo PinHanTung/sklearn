@@ -47,16 +47,16 @@
 - K值選擇會影響預測結果與計算時間
 - 可使用for迴圈、或網格搜尋，尋找最佳k值
 
-| 目標 | 指令 | 說明 |
+| KNN | 指令 | 說明 |
 | --- | --- | --- |
-|import knn|from sklearn.neighbors import KNeighborsClassifier||
+|import|from sklearn.neighbors import KNeighborsClassifier||
 |建立模型|`knn` = KNeighborsClassifier(n_neighbors=`5`)|尋找最近`5`筆鄰居資料，取多數特徵 |
 
-| 目標 | 指令 | 說明 |
+| GridSearch | 指令 | 說明 |
 | --- | --- | --- |
 |import|from sklearn.model_selection import GridSearch| 網格搜尋|
-||`model`=GridSearchCV(`KNeighborsClassifier()`,`套用參數的字典`)|找出最佳參數、套用到模型函式(然後再用fit訓練模型)|
-||`model`.best_params|最佳參數|
+|建立模型|`model`=GridSearchCV(`KNeighborsClassifier()`,`套用參數的字典`)|找出最佳參數、套用到模型函式(然後再用fit訓練模型)|
+|顯示結果|`model`.best_params|最佳參數|
 ||`model`.best_score_.round(3)|交叉驗證準確率(最佳參數)|
 ||`model`.score(`dx_test`,`dy_test`).round(3)|訓練集和測試集的預測準確率(最佳參數)|
 <br/>
