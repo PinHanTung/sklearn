@@ -131,5 +131,5 @@
 | --- | --- | --- | 
 |import|from sklearn.model_selection import cross_val_score||
 |建立模型|`val_score` = cross_val_score(`model`, `x_train`, `y_train`, cv=`5`)|cv表示要切成幾等分，未指定則採預設值5|
-|準確率|val_score.mean().round(3)|k-fold交叉驗證的平均準確率|
+|準確率|`val_score`.mean().round(3)|k-fold交叉驗證的平均準確率|
 <br/>
