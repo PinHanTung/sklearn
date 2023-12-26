@@ -54,7 +54,7 @@
 
 | GridSearch | 指令 | 說明 |
 | --- | --- | --- |
-|import|from sklearn.model_selection import GridSearch| 網格搜尋|
+|import|from sklearn.model_selection import GridSearchCV| 網格搜尋|
 |建立模型|`model`=GridSearchCV(`KNeighborsClassifier()`,`套用參數的字典`)|找出最佳參數、套用到模型函式(然後再用fit訓練模型)|
 |顯示結果|`model`.best_params|最佳參數|
 ||`model`.best_score_.round(3)|交叉驗證準確率(最佳參數)|
