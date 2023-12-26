@@ -19,7 +19,9 @@
 || from sklearn.datasets import make_moons | 產生新月形分布資料|
 || from sklearn.datasets import load_iris| 讀取鳶尾花數據集|
 |標準化| from sklearn.preprocessing import StandardScaler||
-|分割訓練資料| from sklearn.model_selection import train_test_split||
+|select| from sklearn.model_selection import train_test_split| 分割訓練資料|
+||from sklearn.model_selection import cross_val_score| k-fold交叉驗證|
+||from sklearn.model_selection import GridSearch| 網格搜尋(最佳參數)、交叉驗證準確率|
 |預測結果報告| from sklearn.metrics import classification_report||
 * 特徵資料的標準化：各特徵資料的範圍可能差異很大，使用標準化可以把所有特徵資料調整到固定範圍，加快機器學習模型的訓練速度、有機會提高預測準確率。
 <br/>
@@ -43,11 +45,20 @@
 - k個最近鄰居，選多數特徵決來分類
 - KNN不需要訓練，稱為懶惰學習法
 - K值選擇會影響預測結果與計算時間
+- 可使用for迴圈、或網格搜尋，尋找最佳k值
 
-| 目標 | 指令 | 說明 |
+| KNN | 指令 | 說明 |
 | --- | --- | --- |
 |import|from sklearn.neighbors import KNeighborsClassifier||
 |建立模型|`knn` = KNeighborsClassifier(n_neighbors=`5`)|尋找最近`5`筆鄰居資料，取多數特徵 |
+
+| GridSearch | 指令 | 說明 |
+| --- | --- | --- |
+|import|from sklearn.model_selection import GridSearchCV| 網格搜尋|
+|建立模型|`model`=GridSearchCV(`KNeighborsClassifier()`,`套用參數的字典`)|找出最佳參數、套用到模型函式(然後再用fit訓練模型)|
+|顯示結果|`model`.best_params|最佳參數|
+||`model`.best_score_.round(3)|交叉驗證準確率(最佳參數)|
+||`model`.score(`dx_test`,`dy_test`).round(3)|訓練集和測試集的預測準確率(最佳參數)|
 <br/>
 
 ## 3-2. 模型2：邏輯斯回歸 (logistic regression)
@@ -120,5 +131,5 @@
 | --- | --- | --- | 
 |import|from sklearn.model_selection import cross_val_score||
 |建立模型|`val_score` = cross_val_score(`model`, `x_train`, `y_train`, cv=`5`)|cv表示要切成幾等分，未指定則採預設值5|
-|準確率|val_score.mean().round(3)|k-fold交叉驗證的平均準確率|
+|準確率|`val_score`.mean().round(3)|k-fold交叉驗證的平均準確率|
 <br/>
