@@ -2,7 +2,9 @@
 
 ## 0. 使用流程
 - 資料
-  - 引入資料、確認資料：確認行列數量(shape)、欄名稱與資料格式(info)、是否有NA或空值
+  - 引入資料、確認資料：
+    - 確認資料`head()`、行列數量`shape`、欄名與格式`info()`
+    - 是否有NA或空值`isnull().sum()` `options.mode.use_inf_as_na = True`
   - 資料預處理：
     - 轉換資料格式(如要使用knn，需用LabelEncoder，將文字轉換成數字)
     - 資料裁切(如特徵與標籤為同個df，可使用iloc)
@@ -26,9 +28,10 @@
 || from sklearn.datasets import make_moons | 產生新月形分布資料|
 || from sklearn.datasets import load_iris| 讀取鳶尾花數據集|
 |標準化| from sklearn.preprocessing import StandardScaler||
-|select| from sklearn.model_selection import train_test_split| 分割訓練資料|
+|model_select| from sklearn.model_selection import train_test_split| 分割訓練資料|
 ||from sklearn.model_selection import GridSearch| 網格搜尋，找到最佳參數並套入；最佳參數、測試集或交叉驗證準確率|
 ||from sklearn.model_selection import cross_val_score| k-fold交叉驗證，與其準確率|
+|feature_select|from sklearn.feature_selection import SelectKBest, chi2| chi2為卡方統計，分類時尋找對預測有幫助的特徵；SelectKBest將結果最佳的欄挑選出來|
 |預測結果報告| from sklearn.metrics import classification_report||
 * 特徵資料的標準化：各特徵資料的範圍可能差異很大，使用標準化可以把所有特徵資料調整到固定範圍，加快機器學習模型的訓練速度、有機會提高預測準確率。
 <br/>
@@ -53,11 +56,18 @@
 - KNN不需要訓練，稱為懶惰學習法
 - K值選擇會影響預測結果與計算時間
 - 可使用for迴圈、或網格搜尋，尋找最佳k值
+- 注意：knn資料須為數字，若為物件，需使用LabelEncoder()轉換
 
 | KNN | 指令 | 說明 |
 | --- | --- | --- |
 |import|from sklearn.neighbors import KNeighborsClassifier||
 |建立模型|`knn` = KNeighborsClassifier(n_neighbors=`5`)|尋找最近`5`筆鄰居資料，取多數特徵 |
+
+| LabelEncoder | 指令 | 說明 |
+| --- | --- | --- |
+|import|from sklearn.preprocessing import LabelEncoder||
+||`le`=LabelEncoder()|建立編碼器|
+||`df`=`df`.apply(`le`.fit_transform)|fit_transform根據資料型態轉換並且回傳|
 
 | GridSearch | 指令 | 說明 |
 | --- | --- | --- |
@@ -140,3 +150,12 @@
 |建立模型|`val_score` = cross_val_score(`model`, `x_train`, `y_train`, cv=`5`)|cv表示要切成幾等分，未指定則採預設值5|
 |準確率|`val_score`.mean().round(3)|k-fold交叉驗證的平均準確率|
 <br/>
+
+
+## 5. 尋找最佳分類特徵：SelectKBest與chi2
+
+| 目標 | 指令 | 說明 |
+| --- | --- | --- | 
+|import|from sklearn.feature_selection import SelectKBest, chi2| chi2為卡方統計，分類時尋找對預測有幫助的特徵；SelectKBest將結果最佳的欄挑選出來|
+||`dx`=SelectKBest(chi2, k=`3`).fit_transform(`dx`, `dy`)|chi2為此次用來挑選的方法，k為挑選的特徵數量；得出的結果格式為ndarray，需要pd.DataFrame(`dx`)後再使用|
+|chi2備註|`chi2_stat`, `p_values` = chi2(dx, dy)|第一個變數為卡方統計量，第二個變數為p值，p值越小、與標籤越相關|
